@@ -24,7 +24,9 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed('/cubit');
+              },
               child: Text(
                 'Cubit',
                 style: Theme.of(context).textTheme.headlineMedium,
