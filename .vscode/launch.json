@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter-counter-bloc",
+            "name": "flutter-contact-bloc",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "flutter-counter-bloc (profile mode)",
+            "name": "flutter-contact-bloc (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "flutter-counter-bloc (release mode)",
+            "name": "flutter-contact-bloc (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
