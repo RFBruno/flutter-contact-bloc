@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           children: [
             _cardButton(context, 'Example', '/bloc/example'),
-            _cardButton(context, 'Example Freezed', '/bloc/example'),
+            _cardButton(context, 'Example Freezed', '/bloc/example/freezed'),
             _cardButton(context, 'Contact', '/bloc/example'),
             _cardButton(context, 'Contact Cubit', '/bloc/example'),
           ],
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
         Navigator.of(context).pushNamed(route);
       },
       child: Card(
-        color: Colors.indigo.shade100,
+        surfaceTintColor: Colors.white,
         elevation: 5,
         child: Center(
           child: Text(label),

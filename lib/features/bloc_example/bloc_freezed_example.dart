@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_counter_bloc/features/bloc_example/bloc/example_bloc.dart';
 
-class BlocExample extends StatelessWidget {
-  const BlocExample({super.key});
+class BlocFreezedExample extends StatelessWidget {
+  const BlocFreezedExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BlocExample extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Text('Bloc Example'),
+        title: const Text('Bloc Example Freezed'),
       ),
       // Só para escutar algo no state
       body: BlocListener<ExampleBloc, ExampleState>(
