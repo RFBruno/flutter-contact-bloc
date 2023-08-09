@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_counter_bloc/features/contacts/list/bloc/contacts_list_bloc.dart';
+import 'package:flutter_counter_bloc/models/contact_model.dart';
+import 'package:flutter_counter_bloc/widgets/loader.dart';
 
 class ContactsListPage extends StatelessWidget {
   const ContactsListPage({super.key});
@@ -9,7 +13,77 @@ class ContactsListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Contact list'),
       ),
-      body: Container(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed('/contacts/register');
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: BlocListener<ContactsListBloc, ContactsListState>(
+        listenWhen: (previous, current) {
+          return current.maybeWhen(
+            error: (error) => true,
+            orElse: () => false,
+          );
+        },
+        listener: (context, state) {
+          state.whenOrNull(
+            error: (error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(error),
+                  backgroundColor: Colors.red.shade200,
+                ),
+              );
+            },
+          );
+        },
+        child: RefreshIndicator(
+          onRefresh: () async => context.read<ContactsListBloc>()
+            ..add(const ContactsListEvent.findAll()),
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                child: Column(children: [
+                  Loader<ContactsListBloc, ContactsListState>(
+                    selector: (state) {
+                      return state.maybeWhen(
+                        loading: () => true,
+                        orElse: () => false,
+                      );
+                    },
+                  ),
+                  BlocSelector<ContactsListBloc, ContactsListState,
+                      List<ContactModel>>(
+                    selector: (state) {
+                      return state.maybeWhen(
+                        data: (contacts) => contacts,
+                        orElse: () => [],
+                      );
+                    },
+                    builder: (_, contacts) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: contacts.length,
+                        itemBuilder: (context, index) {
+                          final contact = contacts[index];
+                          return ListTile(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/contacts/update');
+                            },
+                            title: Text(contact.name),
+                            subtitle: Text(contact.email),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ]),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
