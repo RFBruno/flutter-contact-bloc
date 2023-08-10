@@ -3,7 +3,7 @@ import 'dart:convert';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ContactModel {
-  final String? id;
+  final int? id;
   final String name;
   final String email;
 
@@ -23,7 +23,7 @@ class ContactModel {
 
   factory ContactModel.fromMap(Map<String, dynamic> map) {
     return ContactModel(
-      id: map['id'] != null ? map['id'] as String : null,
+      id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] as String,
       email: map['email'] as String,
     );

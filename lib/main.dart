@@ -4,6 +4,7 @@ import 'package:flutter_counter_bloc/features/bloc_freezed/example_freezed_bloc.
 import 'package:flutter_counter_bloc/features/bloc_freezed_example.dart';
 import 'package:flutter_counter_bloc/features/contacts/list/bloc/contacts_list_bloc.dart';
 import 'package:flutter_counter_bloc/features/contacts/list/contacts_list_page.dart';
+import 'package:flutter_counter_bloc/features/contacts/register/bloc/contacts_register_bloc.dart';
 import 'package:flutter_counter_bloc/features/contacts/register/contacts_register_page.dart';
 import 'package:flutter_counter_bloc/features/contacts/update/contacts_update_page.dart';
 import 'package:flutter_counter_bloc/home/home_page.dart';
@@ -46,14 +47,18 @@ class MyApp extends StatelessWidget {
               ),
           '/contacts/list': (_) => BlocProvider(
                 create: (context) => ContactsListBloc(
-                  contactsRespository: context.read<ContactsRespository>()
-                )..add(
-                  const ContactsListEvent.findAll()
-                ),
+                    contactsRespository: context.read<ContactsRespository>())
+                  ..add(const ContactsListEvent.findAll()),
                 child: const ContactsListPage(),
               ),
-          '/contacts/register' : (_) => const ContactsRegisterPage(),
-          '/contacts/update' :(_) => const ContactsUpdatePage()
+          '/contacts/register': (_) => BlocProvider(
+              create: (context) {
+                return ContactsRegisterBloc(
+                  contactsRespository: context.read(),
+                );
+              },
+              child: const ContactsRegisterPage()),
+          '/contacts/update': (_) => const ContactsUpdatePage()
         },
       ),
     );
