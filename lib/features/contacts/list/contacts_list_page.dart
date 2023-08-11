@@ -71,18 +71,32 @@ class ContactsListPage extends StatelessWidget {
                         itemCount: contacts.length,
                         itemBuilder: (context, index) {
                           final contact = contacts[index];
-                          return ListTile(
-                            onTap: () async {
-                              await Navigator.of(context).pushNamed(
-                                '/contacts/update',
-                                arguments: contact
-                              );
+                          return Dismissible(
+                            key: Key(index.toString()),
+                            background: Container(
+                              color: Colors.red.shade200,
+                            ),
+                            onDismissed: (direction) {
                               context.read<ContactsListBloc>().add(
-                                const ContactsListEvent.findAll()
-                              );
+                                  ContactsListEvent.delete(model: contact));
+                              context
+                                  .read<ContactsListBloc>()
+                                  .add(const ContactsListEvent.findAll());
                             },
-                            title: Text(contact.name),
-                            subtitle: Text(contact.email),
+                            child: ListTile(
+                              onTap: () async {
+                                await Navigator.of(context).pushNamed(
+                                    '/contacts/update',
+                                    arguments: contact);
+                                if (context.mounted) {
+                                  context
+                                      .read<ContactsListBloc>()
+                                      .add(const ContactsListEvent.findAll());
+                                }
+                              },
+                              title: Text(contact.name),
+                              subtitle: Text(contact.email),
+                            ),
                           );
                         },
                       );
