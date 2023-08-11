@@ -1,9 +1,1 @@
-{
-    "contacts": [
-        {
-            "id": 1,
-            "name": "Rodrigo Rahman",
-            "email": "rodrigo@academiadoflutter.com.br"
-        }
-    ]
-}
+{"contacts":[{"id":1,"name":"teste alteracao","email":"tset@alteracao.com"},{"id":2,"name":"Bruno Rafael","email":"br@br.com"},{"id":3,"name":"cccccccccccc","email":"bbbbbbbbbbbb"},{"id":4,"name":"teste de util","email":"util@email.com"}]}

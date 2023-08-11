@@ -6,10 +6,12 @@ import 'package:flutter_counter_bloc/features/contacts/list/bloc/contacts_list_b
 import 'package:flutter_counter_bloc/features/contacts/list/contacts_list_page.dart';
 import 'package:flutter_counter_bloc/features/contacts/register/bloc/contacts_register_bloc.dart';
 import 'package:flutter_counter_bloc/features/contacts/register/contacts_register_page.dart';
+import 'package:flutter_counter_bloc/features/contacts/update/bloc/bloc/contacts_update_bloc.dart';
 import 'package:flutter_counter_bloc/features/contacts/update/contacts_update_page.dart';
 import 'package:flutter_counter_bloc/home/home_page.dart';
 import 'package:flutter_counter_bloc/features/bloc_example/bloc/example_bloc.dart';
 import 'package:flutter_counter_bloc/features/bloc_example.dart';
+import 'package:flutter_counter_bloc/models/contact_model.dart';
 import 'package:flutter_counter_bloc/repositories/contacts_respository.dart';
 
 void main() {
@@ -58,7 +60,18 @@ class MyApp extends StatelessWidget {
                 );
               },
               child: const ContactsRegisterPage()),
-          '/contacts/update': (_) => const ContactsUpdatePage()
+          '/contacts/update': (context) {
+            final contact =
+                ModalRoute.of(context)!.settings.arguments as ContactModel;
+            return BlocProvider(
+              create: (context) => ContactsUpdateBloc(
+                contactsRespository: context.read(),
+              ),
+              child: ContactsUpdatePage(
+                model: contact,
+              ),
+            );
+          }
         },
       ),
     );

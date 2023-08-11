@@ -4,6 +4,8 @@ import 'package:flutter_counter_bloc/features/contacts/list/bloc/contacts_list_b
 import 'package:flutter_counter_bloc/features/contacts/register/bloc/contacts_register_bloc.dart';
 import 'package:flutter_counter_bloc/widgets/loader.dart';
 
+import '../../../listener_desafio/util_success_error.dart';
+
 class ContactsRegisterPage extends StatefulWidget {
   const ContactsRegisterPage({super.key});
 
@@ -32,16 +34,8 @@ class _ContactsRegisterPageState extends State<ContactsRegisterPage> {
         },
         listener: (context, state) {
           state.whenOrNull(
-            success: () => Navigator.of(context).pop(),
-            error: (message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(message),
-                  backgroundColor: Colors.red.shade200,
-                ),
-
-              );
-            },
+            success: () => utilSuccess(context),
+            error: (message) => utilError(context, message),
           );
         },
         child: Padding(
