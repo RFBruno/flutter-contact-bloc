@@ -30,17 +30,6 @@ class ContactsListCubit extends Cubit<ContactsListCubitState> {
     }
   }
 
-  insert(ContactModel contact) async {
-    try {
-      emit(ContactsListCubitState.loading());
-      await _respository.create(contact);
-      findAll();
-    } catch (e, s) {
-      log('Errou ao adicionar um contato insert', error: e, stackTrace: s);
-      emit(ContactsListCubitState.error(message: 'Erro ao tentar adicionar um novo contato'),);
-    }
-  }
-
   delete(ContactModel contact) async {
     try {
       emit(ContactsListCubitState.loading());
