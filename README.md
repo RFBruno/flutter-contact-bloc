@@ -27,8 +27,10 @@ Here are the technologies used in this project.
   - Flutter environment   
 
 ## Pages
-* **Home** <br> ![image](https://github.com/RFBruno/flutter-counter-bloc/assets/42716180/d1a3f8ce-d690-4a7a-b384-b68155f8d785)
-* **Conuter bloc** <br> ![image](https://github.com/RFBruno/flutter-counter-bloc/assets/42716180/1ab21aed-660e-4c02-a156-c8db7a203ebb)
+* **Home** <br> ![Home](image.png)
+* **Contacts** <br> ![Contacts](image-1.png)
+* **Register** <br> ![Register](image-2.png)
+* **Update** <br> ![Update](image-3.png)
 
 
 ## Links

@@ -60,6 +60,7 @@ class _ContactsRegisterCubitPageState extends State<ContactsRegisterCubitPage> {
                     label: Text('Nome'),
                   ),
                 ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _emailEC,
                   validator: (value) {
@@ -69,6 +70,7 @@ class _ContactsRegisterCubitPageState extends State<ContactsRegisterCubitPage> {
                     label: Text('E-mail'),
                   ),
                 ),
+                const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
                     final valid = _formKey.currentState?.validate() ?? false;

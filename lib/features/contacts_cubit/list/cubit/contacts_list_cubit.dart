@@ -18,8 +18,6 @@ class ContactsListCubit extends Cubit<ContactsListCubitState> {
     try {
       emit(ContactsListCubitState.loading());
       final contacts = await _respository.findAll();
-      await Future.delayed(const Duration(seconds: 2));
-      
       emit(ContactsListCubitState.data(contacts: contacts));
     } catch (e, s) {
       log('Erro ao buscar contatos findAll', error: e, stackTrace: s);
