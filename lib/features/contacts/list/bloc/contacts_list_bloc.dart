@@ -39,7 +39,7 @@ class ContactsListBloc extends Bloc<ContactsListEvent, ContactsListState> {
     try {
       emit(ContactsListState.loading());
       await _respository.delete(event.model);
-
+      add(const _ContactsListEventFindAll());
       
     } catch (e) {
       emit(ContactsListState.error(error: 'Erro ao delete contato'));

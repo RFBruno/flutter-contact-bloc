@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             _cardButton(context, 'Example', '/bloc/example'),
             _cardButton(context, 'Example Freezed', '/bloc/example/freezed'),
             _cardButton(context, 'Contact', '/contacts/list'),
-            _cardButton(context, 'Contact Cubit', '/bloc/example'),
+            _cardButton(context, 'Contact Cubit', '/contacts/cubit/list'),
           ],
         ),
       ),

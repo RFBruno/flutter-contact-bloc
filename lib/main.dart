@@ -8,6 +8,8 @@ import 'package:flutter_counter_bloc/features/contacts/register/bloc/contacts_re
 import 'package:flutter_counter_bloc/features/contacts/register/contacts_register_page.dart';
 import 'package:flutter_counter_bloc/features/contacts/update/bloc/bloc/contacts_update_bloc.dart';
 import 'package:flutter_counter_bloc/features/contacts/update/contacts_update_page.dart';
+import 'package:flutter_counter_bloc/features/contacts_cubit/list/contacts_list_cubit_page.dart';
+import 'package:flutter_counter_bloc/features/contacts_cubit/list/cubit/contacts_list_cubit.dart';
 import 'package:flutter_counter_bloc/home/home_page.dart';
 import 'package:flutter_counter_bloc/features/bloc_example/bloc/example_bloc.dart';
 import 'package:flutter_counter_bloc/features/bloc_example.dart';
@@ -70,6 +72,16 @@ class MyApp extends StatelessWidget {
               child: ContactsUpdatePage(
                 model: contact,
               ),
+            );
+          },
+          '/contacts/cubit/list': (context) {
+            return BlocProvider<ContactsListCubit>(
+              create: (context) {
+                return ContactsListCubit(
+                  respository: context.read()
+                )..findAll();
+              },
+              child: const ContactsListCubitPage(),
             );
           }
         },

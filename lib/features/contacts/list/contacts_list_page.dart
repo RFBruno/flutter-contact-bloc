@@ -79,9 +79,6 @@ class ContactsListPage extends StatelessWidget {
                             onDismissed: (direction) {
                               context.read<ContactsListBloc>().add(
                                   ContactsListEvent.delete(model: contact));
-                              context
-                                  .read<ContactsListBloc>()
-                                  .add(const ContactsListEvent.findAll());
                             },
                             child: ListTile(
                               onTap: () async {
