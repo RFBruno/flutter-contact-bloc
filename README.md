@@ -2,7 +2,7 @@
 ![Logo of the project](https://firebasestorage.googleapis.com/v0/b/portfolio-a7442.appspot.com/o/profile%20github%20images%2Fgithubcapa.png?alt=media&token=091ec4e2-aa66-4b89-a768-6c1a026a262e)
 
 
-## Counter Bloc
+## Contact Bloc
 This is a flutter app, developed for practice.
 This application addresses bloc and cubit architecture with its concepts
 
@@ -34,7 +34,7 @@ Here are the technologies used in this project.
 
 
 ## Links
-  - Repository: https://github.com/RFBruno/flutter-todo-br
+  - Repository: https://github.com/RFBruno/flutter-contact-bloc
 
   ## Versioning
 
